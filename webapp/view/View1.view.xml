@@ -1,0 +1,52 @@
+<mvc:View
+    controllerName="test.smartcontrols1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:abc="sap.ui.comp.smarttable"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <content>
+            <smartFilterBar:SmartFilterBar
+                id="smartFilBar"
+                entitySet="Employees"
+            >
+                <smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration
+                        id="empId"
+                        visibleInAdvancedArea="true"
+                        label="Employee ID"
+                        key="EmployeeID"
+                    >
+
+                    <!-- Default filter value -->
+                        <smartFilterBar:defaultFilterValues>
+                            <smartFilterBar:SelectOption low="1" />
+                        </smartFilterBar:defaultFilterValues>
+                    </smartFilterBar:ControlConfiguration>
+                    <smartFilterBar:ControlConfiguration
+                        id="firstName"
+                        visibleInAdvancedArea="true"
+                        label="First Name"
+                        key="FirstName"
+                    />
+
+                  
+                </smartFilterBar:controlConfiguration>
+            </smartFilterBar:SmartFilterBar>
+
+            <abc:SmartTable
+                id="smarttbl"
+                smartFilterId="smartFilBar"
+                entitySet="Employees"
+                enableAutoBinding="true"
+                tableType="ResponsiveTable"
+                beforeRebindTable="onBeforeRebindTable"
+                initiallyVisibleFields="EmployeeID,LastName,FirstName,Title"
+            />
+        </content>
+    </Page>
+</mvc:View>
