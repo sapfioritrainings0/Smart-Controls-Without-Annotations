@@ -20,13 +20,7 @@
                         visibleInAdvancedArea="true"
                         label="Employee ID"
                         key="EmployeeID"
-                    >
-
-                    <!-- Default filter value -->
-                        <smartFilterBar:defaultFilterValues>
-                            <smartFilterBar:SelectOption low="1" />
-                        </smartFilterBar:defaultFilterValues>
-                    </smartFilterBar:ControlConfiguration>
+                    />
                     <smartFilterBar:ControlConfiguration
                         id="firstName"
                         visibleInAdvancedArea="true"
@@ -34,18 +28,33 @@
                         key="FirstName"
                     />
 
-                  
+                    <smartFilterBar:ControlConfiguration 
+                    key="EmployeeType"
+                    label="Employee Type"
+                    visibleInAdvancedArea="true"
+                    index="10"
+                    >
+                        <smartFilterBar:customControl >
+
+                        <RadioButtonGroup selectedIndex="-1" columns="2" >
+                        <RadioButton text="Permanent Emp" ></RadioButton>
+                        <RadioButton text="Contract Emp" ></RadioButton>
+                        </RadioButtonGroup>
+
+                        </smartFilterBar:customControl>
+                    </smartFilterBar:ControlConfiguration>
+
+
                 </smartFilterBar:controlConfiguration>
             </smartFilterBar:SmartFilterBar>
 
             <abc:SmartTable
-                id="smarttbl"
+                id="smartTable"
                 smartFilterId="smartFilBar"
                 entitySet="Employees"
                 enableAutoBinding="true"
+                initiallyVisibleFields="EmployeeID,FirstName,LastName,Title"
                 tableType="ResponsiveTable"
-                beforeRebindTable="onBeforeRebindTable"
-                initiallyVisibleFields="EmployeeID,LastName,FirstName,Title"
             />
         </content>
     </Page>
